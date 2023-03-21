@@ -1,0 +1,13 @@
+# animations
+*.gif
+*.mp4
+
+# IDE
+.idea
+
+# cache
+*.pyc
+
+# archives & libs
+venv
+*.zip
