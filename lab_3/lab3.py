@@ -41,12 +41,13 @@ for _ in range(number_of_points):
 points_and_vectors: list[dict[...]] = [dict(zip(["point", "vector"], el)) for el in zip(points_anim, speed_vectors)]
 global_orientation = point_location_from_vec(points_anim[0], *lines_outer[0])
 
+frames_num = calc_frames_number(dc(x_outer), dc(y_outer), dc(x_inner), dc(y_inner), dc(points_and_vectors))
 def animate(i):
     # flag_list = [el["vector"] == Vector() for el in points_and_vectors]
     # if False not in flag_list:
     #     print("all point stuck!!!!", flag_list)
         # print(i)
-
+    print(f"{i}/{frames_num}")
     ax.clear()
     ax.plot([*x_outer, x_outer[0]], [*y_outer, y_outer[0]], color='tab:green', marker='.')
     ax.plot([*x_inner, x_inner[0]], [*y_inner, y_inner[0]], color='tab:blue', marker='.')
@@ -73,9 +74,9 @@ def animate(i):
                     break
 
 # print(points_and_vectors)
-frames_num = calc_frames_number(dc(x_outer), dc(y_outer), dc(x_inner), dc(y_inner), dc(points_and_vectors))
+
 print(f"{frames_num=}")
 ani = FuncAnimation(fig, animate, frames=frames_num + fps // 10,
                     interval=50, repeat=False)
-ani.save(f"simple_animation_{fps}fps.gif", dpi=300, writer=PillowWriter(fps=fps))
+ani.save(f"points_and_polygons_{fps}fps.gif", dpi=300, writer=PillowWriter(fps=fps))
 print(f"work time:\t{time.time() - start}")

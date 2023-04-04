@@ -35,7 +35,10 @@ def are_two_lines_intersect(p1: Point, p2: Point, p3: Point, p4: Point) -> bool:
     d2 = np.linalg.det([[p4.x - p3.x, p4.y - p3.y], [p2.x - p3.x, p2.y - p3.y]])
     d3 = np.linalg.det([[p2.x - p1.x, p2.y - p1.y], [p3.x - p1.x, p3.y - p1.y]])
     d4 = np.linalg.det([[p2.x - p1.x, p2.y - p1.y], [p4.x - p1.x, p4.y - p1.y]])
-
+    if d1 == d2 == d3 == d4 == 0:
+        c1, c2 = Vector(p1, p3) * Vector(p1, p4), Vector(p2, p3) * Vector(p2, p4)
+        c3, c4 = Vector(p3, p1) * Vector(p3, p2), Vector(p4, p1) * Vector(p4, p2)
+        return True if c1 < 0 or c2 < 0 or c3 < 0 or c4 < 0 else False
     if d1 * d2 <= 0 and d3 * d4 <= 0:
         return True
     else:

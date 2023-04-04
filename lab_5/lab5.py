@@ -47,7 +47,6 @@ def new_frame(i):
             speed_vectors[ind] = -speed_vectors[ind]
         points[ind] += speed_vectors[ind]
 
-
 anime = FuncAnimation(fig, new_frame, frames=frames_n + fps // 10,
                       interval=50, repeat=False)
 anime.save(f"simple_animation_{fps}fps.mp4", dpi=300, writer=FFMpegWriter(fps=fps))
