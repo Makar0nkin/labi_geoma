@@ -90,13 +90,13 @@ def build_convex_hull(points: list):
 
 def draw_convex_hull(convex_hull_points: list, color: str):
     for i in range(len(convex_hull_points) - 1):
-        plt.plot([convex_hull_points[i].x, convex_hull_points[i + 1].x],
+        plt.plot([convex_hull_points[i].x_arr, convex_hull_points[i + 1].x_arr],
                  [convex_hull_points[i].y, convex_hull_points[i + 1].y], color=color)
     camera.snap()
 
 
 def draw_points(points: list):
-    plt.scatter([p.x for p in points], [p.y for p in points], color="tab:blue")
+    plt.scatter([p.x_arr for p in points], [p.y for p in points], color="tab:blue")
     # for i in range(len(points)):
     #     plt.scatter(points[i].x, points[i].y)
 

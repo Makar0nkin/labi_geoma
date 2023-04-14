@@ -8,28 +8,27 @@ class Point:
     x: float = 0
     y: float = 0
 
-    def set_direction(self, direction_vec, speed):
+    def set_direction(self, direction_vec):
         self.direction_vec = direction_vec
-        self.speed = speed
 
     def move(self):
-        self.x += self.direction_vec.x
+        self.x += self.direction_vec.x_arr
         self.y += self.direction_vec.y
 
     def get_list(self):
         return [self.x, self.y]
 
     def __add__(self, other):
-        return Point(self.x + other.x, self.y + other.y)
+        return Point(self.x + other.x_arr, self.y + other.y)
 
     def __isub__(self, other):
-        return Point(self.x - other.x, self.y - other.y)
+        return Point(self.x - other.x_arr, self.y - other.y)
 
     def __neg__(self):
         return Point(-self.x, -self.y)
 
     def __eq__(self, other):
-        return self.x == other.x and self.y == other.y
+        return self.x == other.x_arr and self.y == other.y
 
     def __hash__(self):
         return hash((self.x, self.y))
@@ -56,7 +55,7 @@ class Vector(Point):
             self.y = b
 
     def from_points(self, p1, p2):
-        self.x = (p2.x - p1.x)
+        self.x = (p2.x_arr - p1.x_arr)
         self.y = (p2.y - p1.y)
         return self
 
@@ -69,13 +68,13 @@ class Vector(Point):
     def __mul__(self, other):
         if type(other) in [int, float]:
             return Vector(self.x * other, self.y * other)
-        return self.x * other.x + self.y * other.y
+        return self.x * other.x_arr + self.y * other.y
 
     def __rmul__(self, other):
         return self.__mul__(other)
 
     def __sub__(self, other):
-        return Vector(self.x - other.x, self.y - other.y)
+        return Vector(self.x - other.x_arr, self.y - other.y)
 
     def __neg__(self):
         return Vector(-self.x, -self.y)

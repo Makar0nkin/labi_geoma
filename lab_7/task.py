@@ -76,8 +76,8 @@ for i in range(n):
         points.append(Point(*np.random.rand(2)))
     convex_hull = dynamic_convex_hull(points, convex_hull)
     plt.scatter([p.x for p in points], [p.y for p in points], color="tab:orange")
-    plt.scatter([p.x for p in convex_hull], [p.y for p in convex_hull], color="tab:blue")
-    plt.plot([p.x for p in [*convex_hull, convex_hull[0]]], [p.y for p in [*convex_hull, convex_hull[0]]], color="tab:blue")
+    plt.scatter([p.x_arr for p in convex_hull], [p.y for p in convex_hull], color="tab:blue")
+    plt.plot([p.x_arr for p in [*convex_hull, convex_hull[0]]], [p.y for p in [*convex_hull, convex_hull[0]]], color="tab:blue")
     camera.snap()
 
 animation = camera.animate(blit=False, interval=200)

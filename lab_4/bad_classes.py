@@ -22,5 +22,5 @@ class Vector(Point):
         return math.sqrt(self.x * self.x + self.y * self.y)
 
     def __mul__(self, other):
-        return self.x * other.x + self.y * other.y
+        return self.x * other.x_arr + self.y * other.y
 

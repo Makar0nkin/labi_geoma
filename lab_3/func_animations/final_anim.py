@@ -53,7 +53,7 @@ while False in [el["vector"] == Vector() for el in points_and_vectors]:
     # ax.set_xlim([-0.1, 1.1])
     # ax.set_ylim([-0.1, 1.1])
     for point_vec in points_and_vectors:
-        point_vec["point"].x += point_vec["vector"].x
+        point_vec["point"].x_arr += point_vec["vector"].x_arr
         point_vec["point"].y += point_vec["vector"].y
         if point_location_from_simple_polygon_octane(x_inner, y_inner, point_vec["point"]) == "inside" and \
                 not point_vec["vector"] == Vector():

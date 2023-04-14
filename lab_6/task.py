@@ -83,12 +83,12 @@ def complete_convex_hull(points: list):
 def draw_points(points: list):
     for i in range(len(points)):
         # draw_point(points[i])
-        plt.scatter(points[i].x, points[i].y, color='black')
+        plt.scatter(points[i].x_arr, points[i].y, color='black')
 
 
 def draw_convex_hull(convex_hull_points: list, color: str):
     for i in range(len(convex_hull_points) - 1):
-        plt.plot([convex_hull_points[i].x, convex_hull_points[i + 1].x],
+        plt.plot([convex_hull_points[i].x_arr, convex_hull_points[i + 1].x_arr],
                  [convex_hull_points[i].y, convex_hull_points[i + 1].y], color=color)
 
 
@@ -99,7 +99,7 @@ def move(moving_points: list, vectors: list):
 
 def opposite_vectors_of_moving(vectors: list):
     for i in range(len(vectors)):
-        vectors[i] = Point(-vectors[i].x, -vectors[i].y)
+        vectors[i] = Point(-vectors[i].x_arr, -vectors[i].y)
     return vectors
 
 

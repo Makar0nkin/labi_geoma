@@ -53,8 +53,8 @@ def point_location_from_simple_polygon_octane(x, y, p0):
         elif delta_i < -4:
             delta_i += 8
         elif np.abs(delta_i) == 4:
-            d = np.linalg.det([[points[i].x - p0.x, points[i].y - p0.y],
-                               [points[i + 1].x - p0.x, points[i + 1].y - p0.y]])
+            d = np.linalg.det([[points[i].x - p0.x_arr, points[i].y - p0.y],
+                               [points[i + 1].x - p0.x_arr, points[i + 1].y - p0.y]])
             if d > 0:
                 delta_i = 4
             elif d < 0:
@@ -99,7 +99,7 @@ def point_location_from_simple_polygon(x, y, p0):
 
     y_max: int = max(y)
     y_min: int = min(y)
-    x0, y0 = p0.x, p0.y
+    x0, y0 = p0.x_arr, p0.y
 
     q = Point(x_min - 1, y0)
 

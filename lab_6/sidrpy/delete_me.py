@@ -12,7 +12,7 @@ def calc_frames_number(x_outer, y_outer, x_inner, y_inner, points_and_vectors) -
     frames_counter = 0
     while False in [el["vector"] == Vector() for el in points_and_vectors]:
         for point_vec in points_and_vectors:
-            point_vec["point"].x += point_vec["vector"].x
+            point_vec["point"].x_arr += point_vec["vector"].x_arr
             point_vec["point"].y += point_vec["vector"].y
             if point_location_from_simple_polygon_octane(x_inner, y_inner, point_vec["point"]) == "inside" and\
                     not point_vec["vector"] == Vector():

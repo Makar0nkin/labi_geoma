@@ -44,7 +44,7 @@ def are_two_lines_intersect(p1: Point, p2: Point, p3: Point, p4: Point) -> bool:
 def calc_angle(p1: Point, z: Point, p2: Point) -> float:
     v1 = Vector().from_points(z, p1)
     v2 = Vector().from_points(z, p2)
-    arc = np.round(np.arccos((v1.x * v2.x + v1.y * v2.y) / (v1.norm() * v2.norm())) * 180 / np.pi)
+    arc = np.round(np.arccos((v1.x_arr * v2.x_arr + v1.y * v2.y) / (v1.norm() * v2.norm())) * 180 / np.pi)
     if point_location_from_vec(p2, z, p1) == "right":
         return 360 - arc
     else:

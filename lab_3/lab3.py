@@ -55,7 +55,7 @@ def animate(i):
     ax.set_xlim([-0.1, 1.1])
     ax.set_ylim([-0.1, 1.1])
     for point_vec in points_and_vectors:
-        point_vec["point"].x += point_vec["vector"].x
+        point_vec["point"].x_arr += point_vec["vector"].x_arr
         point_vec["point"].y += point_vec["vector"].y
         if point_location_from_simple_polygon_octane(x_inner, y_inner, point_vec["point"]) == "inside" and\
                 not point_vec["vector"] == Vector():
@@ -67,7 +67,7 @@ def animate(i):
                     # print(point_location_from_vec(point_vec["point"], *line))
                     p1, p2 = line
                     # ax.scatter([p1.x, p2.x], [p1.y, p2.y], color='tab:purple')
-                    ax.plot([p1.x, p2.x], [p1.y, p2.y], color='tab:orange', marker=".")
+                    ax.plot([p1.x_arr, p2.x_arr], [p1.y, p2.y], color='tab:orange', marker=".")
                     v_i = point_vec["vector"]
                     q_j = Vector().from_points(*line)
                     point_vec["vector"] = 2 * ((v_i * q_j) / (q_j * q_j)) * q_j - v_i

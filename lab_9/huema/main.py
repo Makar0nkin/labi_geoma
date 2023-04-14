@@ -22,7 +22,7 @@ def init_points():
 
 # Получить список координат по x из списка точек
 def get_x_coords(points: list):
-    return [point.x for point in points]
+    return [point.x_arr for point in points]
 
 
 # Получить список координат по y из списка точек
@@ -40,7 +40,7 @@ class Polygon:
     def draw_polygon(self, color):
         # Вывод точки
         for i in range(len(self.points) - 1):
-            plt.plot(self.points[i].x, self.points[i].y, marker="o", color=color)
+            plt.plot(self.points[i].x_arr, self.points[i].y, marker="o", color=color)
 
         plt.plot(get_x_coords(self.points), get_y_coords(self.points), color=color)
 
@@ -74,7 +74,7 @@ def sort_by_x(points: list):
     for i in range(len(sorted_points)):
         min_idx = i
         for j in range(i + 1, len(sorted_points)):
-            if sorted_points[min_idx].x >= sorted_points[j].x:
+            if sorted_points[min_idx].x_arr >= sorted_points[j].x_arr:
                 min_idx = j
         sorted_points[i], sorted_points[min_idx] = sorted_points[min_idx], sorted_points[i]
     return sorted_points
@@ -122,7 +122,7 @@ def closest_pair(points_sorted_by_x: list, points_sorted_by_y: list):
     y_left_set = []
     y_right_set = []
     for i in range(len(points_sorted_by_y)):
-        if points_sorted_by_y[i].x < x_sep_point.x:
+        if points_sorted_by_y[i].x_arr < x_sep_point.x_arr:
             y_left_set.append(points_sorted_by_y[i])
         else:
             y_right_set.append(points_sorted_by_y[i])
@@ -133,7 +133,7 @@ def closest_pair(points_sorted_by_x: list, points_sorted_by_y: list):
 
     delta_set = []
     for i in range(len(points_sorted_by_y)):
-        if abs(points_sorted_by_y[i].x - x_sep_point.x) <= min_distance:
+        if abs(points_sorted_by_y[i].x_arr - x_sep_point.x_arr) <= min_distance:
             delta_set.append(points_sorted_by_y[i])
 
     mythical_number = 7
@@ -219,7 +219,7 @@ def get_closest_pair_indexes(points: list, closest_pair_diameter):
 
 def draw_min_distance(points: list, closest_pair_diameter):
     closest_pair_indexes = get_closest_pair_indexes(points, closest_pair_diameter)
-    plt.plot([points[closest_pair_indexes[0]].x, points[closest_pair_indexes[1]].x],
+    plt.plot([points[closest_pair_indexes[0]].x_arr, points[closest_pair_indexes[1]].x_arr],
              [points[closest_pair_indexes[0]].y, points[closest_pair_indexes[1]].y], "red")
 
 
@@ -246,7 +246,7 @@ def init_motion(points: list):
         camera.snap()
 
         for j in range(len(points)):
-            next_point = Point(points[j].x + vectors[j].x, points[j].y + vectors[j].y)
+            next_point = Point(points[j].x_arr + vectors[j].x_arr, points[j].y + vectors[j].y)
             if not get_point_position_binary_test(next_point, Q):
                 edges = get_intersected_edge(points[j], next_point, Q)
                 if len(edges) == 0:

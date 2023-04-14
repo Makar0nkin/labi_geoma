@@ -37,8 +37,8 @@ def new_frame(i):
     ax.clear()
     ax.scatter([coord.x for coord in points], [coord.y for coord in points], color="tab:blue")
     ax.plot([coord.x for coord in convex_hull], [coord.y for coord in convex_hull], color="tab:blue")
-    ax.scatter([dp.x for dp in diam_points], [dp.y for dp in diam_points], color="tab:orange")
-    ax.plot([dp.x for dp in diam_points], [dp.y for dp in diam_points], color="tab:orange")
+    ax.scatter([dp.x_arr for dp in diam_points], [dp.y for dp in diam_points], color="tab:orange")
+    ax.plot([dp.x_arr for dp in diam_points], [dp.y for dp in diam_points], color="tab:orange")
     ax.set_xlim([-0.6, 1.6])
     ax.set_ylim([-0.6, 1.6])
 

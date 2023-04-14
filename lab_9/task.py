@@ -10,7 +10,7 @@ mpl_style(True)
 
 
 def split_to_sorted(ps: list[Point]) -> tuple[list[Point], list[Point]]:
-    return sorted(ps, key=lambda p: p.x), sorted(ps, key=lambda p: p.y)
+    return sorted(ps, key=lambda p: p.x_arr), sorted(ps, key=lambda p: p.y)
 
 
 def nearest_pair(points_x: list[Point], points_y: list[Point]) -> dict[str, tuple[Point, Point] | float]:
